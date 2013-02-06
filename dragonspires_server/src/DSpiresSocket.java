@@ -68,7 +68,8 @@ public class DSpiresSocket extends Thread {
 	Socket my_socket;
 	int socket_base_num;
 	BufferedReader in;
-	PrintWriter out;
+	//PrintWriter out;
+	ObjectOutputStream objectOutputStream;
 
 	String name="",colorstring="   !",ocolorstring="   !",desc="",pstring="!'+!",password="",email="Unspecified",homepage="Unspecified",title="the newbie";
 	char cx='6',cy='J';
@@ -155,7 +156,7 @@ public class DSpiresSocket extends Thread {
 		else
 			closed=true;
 		try {
-			out.close();
+			objectOutputStream.close();
 			in.close();
 			my_socket.close();
 		}
@@ -179,7 +180,8 @@ public class DSpiresSocket extends Thread {
 	}
 
 	public void startUp() throws Exception {
-		out = new PrintWriter(new BufferedOutputStream(my_socket.getOutputStream()),true);
+		objectOutputStream = new ObjectOutputStream(my_socket.getOutputStream());
+		//out = new PrintWriter(new BufferedOutputStream(my_socket.getOutputStream()),true);
 		in = new BufferedReader(new InputStreamReader(my_socket.getInputStream()));
 
 		sight = new Vector();
@@ -191,7 +193,13 @@ public class DSpiresSocket extends Thread {
 
 	public void pSend(String msg) {
 		//This could be useful for counting bytes sent later on.
-		out.println(msg);
+		//out.println(msg);
+		try {
+			objectOutputStream.writeObject(new ServerMessage(msg));
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
 	}
 
 	public void preLoginLoop() throws Exception {
@@ -1053,9 +1061,10 @@ public class DSpiresSocket extends Thread {
 					buffer[n++]=astring.charAt(0);
 					buffer[n]=astring.charAt(1);
 				}
-				out.print("]data");
-				out.write(buffer,0,n);
-				out.println();
+				//TODO: find out how to handle this with new transmission model
+				//out.print("]data");
+				//out.write(buffer,0,n);
+				//out.println();
 				try {
 					sleep(600);
 				}
