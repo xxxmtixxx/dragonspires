@@ -170,7 +170,7 @@ public class DSpiresServer extends Thread {
 	public void startServer() throws Exception {
 
 		try {
-			int savelog=3;
+			int savelog=100;
 			File afile,bfile;
 
 			// Cycle server log save
