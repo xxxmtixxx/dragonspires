@@ -249,7 +249,7 @@ public class stuffThread extends Thread {
 				case 1:
 				case 8:
 				case 16:
-					initParade();
+					//initParade();
 			}
 		}
 	}
