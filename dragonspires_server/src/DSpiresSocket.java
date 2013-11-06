@@ -188,14 +188,16 @@ public class DSpiresSocket extends Thread {
 		inventory = new int[35];
 
 		pSend(parent.motd);
-		pSend("Dragonroar!\nV0026");
+		pSend("Dragonroar!\nV0075");
 	}
 
 	public void pSend(String msg) {
 		//This could be useful for counting bytes sent later on.
 		//out.println(msg);
+		System.out.println(msg);
 		try {
 			objectOutputStream.writeObject(new ServerMessage(msg));
+			objectOutputStream.flush();
 		} catch(Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
