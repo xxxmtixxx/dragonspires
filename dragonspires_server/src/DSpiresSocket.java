@@ -194,7 +194,7 @@ public class DSpiresSocket extends Thread {
 	public void pSend(String msg) {
 		//This could be useful for counting bytes sent later on.
 		//out.println(msg);
-		System.out.println(msg);
+		//System.out.println(msg);
 		try {
 			objectOutputStream.writeObject(new ServerMessage(msg));
 			objectOutputStream.flush();
