@@ -4169,7 +4169,7 @@ public class DSpiresSocket extends Thread {
 			else if (incoming.toLowerCase().equals("nez")) {
 				if (!parent.nez) {
 					map.broadcast("(You feel a shift in the fiber of reality. The sky becomes dark with clouds, the Sun becomes tinged red. Birds nearby stop singing and scatter in every direction. Nezerath has returned from the mountains of DragonSpires and is attacking!",map);
-					//map.addEnemy(new Nezerath(parent.nextx(cx-32,cy-32,facing),parent.nexty(cy-32,facing),true,map));
+					map.addEnemy(new Nezerath(parent.nextx(cx-32,cy-32,facing),parent.nexty(cy-32,facing),true,map));
 					parent.nez=true;
 				}
 				return true;
