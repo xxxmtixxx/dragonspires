@@ -80,8 +80,8 @@ import main.java.com.kyleswebspace.dragonspires.server.ServerMessage;
 
 public class DragonSpiresPanel extends Panel implements Runnable {
 
-	final char version[] = {'V','0','0','7','5'};
-	private final static String[] habl = {"localhost"};
+	final char version[] = {'V','0','0','7','8'};
+	private final static String[] habl = {"dragonspires.kyleswebspace.com"};
 
 	final static String itemnames[]= {"nothing","some paper",
                                                                 "light armor",

@@ -190,7 +190,7 @@ public class DSpiresSocket extends Thread {
 		inventory = new int[35];
 
 		pSend(parent.motd);
-		pSend("Dragonroar!\nV0075");
+		pSend("Dragonroar!\nV0078");
 	}
 
 	public void pSend(String msg) {
