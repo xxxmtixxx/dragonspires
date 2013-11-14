@@ -168,7 +168,7 @@ public class stuffThread extends Thread {
 		}
 	}
 	public void initParade() {
-
+	/*
 		int pi[] = {143};
 
 		if (!paradeon[0]) {
@@ -231,16 +231,15 @@ public class stuffThread extends Thread {
 								"(((%",
 								"    "};
 			parade[2] = new ParadePath(tpath3,tcss3,pi,11,14,parent.maps[0],parent);
-		}
+		}*/
 
-		parent.globalBroadcast("[\'(*)-(*) It's the DragonSpires Parade! (*)-(*)");
-		parent.globalBroadcast("[\'(*)-(*) Type '-goparade' within the next 30 seconds to join in!");
+		parent.globalBroadcast("[\'(*) NO MORE PARADES! EVER! *)");
 
-		paradeon[0]=true;
-		paradeon[1]=true;
-		paradeon[2]=true;
+		//paradeon[0]=true;
+		//paradeon[1]=true;
+		//paradeon[2]=true;
 
-		new GoParadeThread(parent);
+		//new GoParadeThread(parent);
 	}
 	public void paradeTimeCheck() {
 		Calendar c = Calendar.getInstance();
