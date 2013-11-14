@@ -1,0 +1,320 @@
+ERROR: Query died: 0
+java.net.BindException: Address already in use: Cannot bind
+	at java.net.DualStackPlainDatagramSocketImpl.socketBind(Native Method)
+	at java.net.DualStackPlainDatagramSocketImpl.bind0(Unknown Source)
+	at java.net.AbstractPlainDatagramSocketImpl.bind(Unknown Source)
+	at java.net.DatagramSocket.bind(Unknown Source)
+	at java.net.DatagramSocket.<init>(Unknown Source)
+	at java.net.DatagramSocket.<init>(Unknown Source)
+	at main.java.com.kyleswebspace.dragonspires.server.DSPingServer.run(DSPingServer.java:54)
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+Exception in thread "Thread-1" java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSPingServer.run(DSPingServer.java:73)
+ERROR: Query died: 1
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 2
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 3
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 4
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 5
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 6
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 7
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 8
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 9
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 10
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 11
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 12
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 13
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 14
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 15
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 16
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 17
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 18
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 19
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 20
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 21
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 22
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 23
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 24
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 25
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 26
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 27
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 28
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 29
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 30
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 31
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 32
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 33
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 34
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 35
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 36
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 37
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 38
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 39
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 40
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 41
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 42
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 43
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 44
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 45
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 46
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 47
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 48
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 49
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 50
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 51
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 52
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 53
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 54
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 55
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 56
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 57
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 58
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 59
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 60
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 61
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 62
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 63
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 64
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 65
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 66
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 67
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 68
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 69
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 70
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 71
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 72
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 73
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 74
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 75
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 76
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 77
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 78
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 79
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 80
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 81
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 82
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 83
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 84
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 85
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 86
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 87
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 88
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 89
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 90
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 91
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 92
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 93
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 94
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 95
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 96
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 97
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 98
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Query died: 99
+java.lang.NullPointerException
+	at main.java.com.kyleswebspace.dragonspires.server.DSQueryServer.run(DSQueryServer.java:85)
+ERROR: Shutting down query server.
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at main.java.com.kyleswebspace.dragonspires.server.DSpiresServer.run(DSpiresServer.java:126)

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="dragonspires-server/target/classes" path="dragonspires-server/src"/>
+	<classpathentry excluding="main/java/com/kyleswebspace/dragonspires/server/ServerMessage.java" kind="src" output="dragonspires-client/target/classes" path="dragonspires-client/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="ServerMessage.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
