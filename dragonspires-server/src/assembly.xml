@@ -13,4 +13,11 @@
       <scope>runtime</scope>
     </dependencySet>
   </dependencySets>
+  <fileSets>
+    <fileSet>
+	  <includes>
+	    <include>src/main/java/com/kyleswebspace/dragonspires/server/resources/log4j2.xml</include>
+	  </includes>
+	</fileSet>
+  </fileSets>
 </assembly>

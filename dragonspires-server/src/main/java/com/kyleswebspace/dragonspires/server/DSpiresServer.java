@@ -42,8 +42,14 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
+
 public class DSpiresServer extends Thread {
 
+	private static Logger logger = LogManager.getLogger(DSpiresServer.class);
+	
 	static final int SOCKETS = 100;
                  int PORT;
 	static final int MAPS = 1;
@@ -118,6 +124,9 @@ public class DSpiresServer extends Thread {
 	}
 
 	public void run() {
+		
+		initLogger();
+		
 		Socket client;
 		int i;
 
@@ -136,8 +145,8 @@ public class DSpiresServer extends Thread {
 				//client.setSoTimeout(60000);
 				//client.setSoLinger(true,1000);
 				client.setTcpNoDelay(true);
-
-				log("Connected: "+client.getInetAddress());
+				
+				logger.debug("Connected: "+client.getInetAddress());
 
 				if (!checkDomainBans(client))
 					basicSocketCloseMessage(client,"Banned","Your IP or domain is currently banned.\nIf you have a problem with this e-mail somebody.\nPress Ctrl-Q to close.");
@@ -158,9 +167,18 @@ public class DSpiresServer extends Thread {
 		}
 	}
 
+	private void initLogger() {
+		try {
+			URI configuration = this.getClass().getClassLoader().getResource("log4j2.xml").toURI();
+			Configurator.initialize("config", null, configuration);
+		} catch(URISyntaxException e) {
+			logger.error(e);
+		}
+	}
+
 	public void basicSocketCloseMessage(Socket s, String reason, String message) throws IOException {
 		PrintWriter o = new PrintWriter(new BufferedOutputStream(s.getOutputStream()));
-		log("Disonnected:  ("+s.getInetAddress()+") {"+reason+"}");
+		logger.debug("Disonnected:  ("+s.getInetAddress()+") {"+reason+"}");
 		o.println(message);
 		o.flush();
 		o.close();
@@ -171,7 +189,8 @@ public class DSpiresServer extends Thread {
 
 	public void startServer() throws Exception {
 
-		try {
+
+	try {
 			int savelog=100;
 			File afile,bfile;
 
@@ -209,7 +228,6 @@ public class DSpiresServer extends Thread {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		new DSPingServer();
 		new DSQueryServer(this);
 		dspct = new DSPCleanupThread(this);
@@ -220,6 +238,7 @@ public class DSpiresServer extends Thread {
 		sooperadmins = admins.size();
 
 		admins.addElement("Refused");
+		admins.addElement("Xerp");
 
 		defaultadmins = admins.size();
 
@@ -424,7 +443,7 @@ public class DSpiresServer extends Thread {
 		Calendar c = Calendar.getInstance();
 		starttime = "";//[DragonSpires server started on " + c.getTime() + "]";
 
-		log("Server started.");
+		logger.debug("Server started.");
 	}
 
 	public int findFreeSocket() {
@@ -643,7 +662,7 @@ public class DSpiresServer extends Thread {
 		o.close();
 		}
 		catch (Exception e) {
-			log(e.toString());
+			logger.error(e);
 		}
 	}
 	public void globalBroadcast(String message) {
@@ -671,19 +690,7 @@ public class DSpiresServer extends Thread {
 		}
 		return false;
 	}
-	public void log(String txt) { //Print System Event
-		//try {
-		//	RandomAccessFile raf = new RandomAccessFile(new File("../log/server.log"), "rw");
-			Calendar c = Calendar.getInstance();
-		//	raf.seek(raf.length());
-		//	raf.writeBytes("[" + c.getTime() + "] " + txt + "\n");
-			System.out.println("[" + c.getTime() + "] " + txt);
-		//	raf.close();
-		
-		//}
-		//catch (IOException e) {
-		//}
-	}
+	
 	public void logCommands(String txt, DSpiresSocket s) {
 		switch (txt.charAt(0)) {
 			case 'm':
@@ -949,9 +956,9 @@ public class DSpiresServer extends Thread {
 			}
 		}
 		catch (IOException e) {
-			log(e.toString());
-			System.err.println("Error reading MOTD: " + e);
+			logger.error(e);
 		}
+		
 		return motdc;
 	}
 	public void saveAllCharsNow() {

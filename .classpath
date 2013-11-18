@@ -3,6 +3,8 @@
 	<classpathentry kind="src" output="dragonspires-server/target/classes" path="dragonspires-server/src"/>
 	<classpathentry excluding="main/java/com/kyleswebspace/dragonspires/server/ServerMessage.java" kind="src" output="dragonspires-client/target/classes" path="dragonspires-client/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="ServerMessage.jar"/>
+	<classpathentry kind="lib" path="eclipse_lib/log4j-core-2.0-beta9.jar"/>
+	<classpathentry kind="lib" path="eclipse_lib/ServerMessage.jar"/>
+	<classpathentry kind="lib" path="eclipse_lib/log4j-api-2.0-beta9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

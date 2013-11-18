@@ -38,11 +38,27 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           and everyone else who has supported the development of DragonSpires.
 */
 
-import java.net.*;
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.util.Enumeration;
+import java.util.NoSuchElementException;
+import java.util.StringTokenizer;
+import java.util.Vector;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class DSpiresSocket extends Thread {
+	
+	private static Logger logger = LogManager.getLogger(DSpiresSocket.class);
+	
 	static DSpiresServer parent;
 	static int MAX_STAM = DSpiresServer.MAX_STAM;
 	static byte shapestart[][] = DSpiresServer.longShapeStart;
@@ -169,7 +185,7 @@ public class DSpiresSocket extends Thread {
 		if (parent.socketbase[socket_base_num]==this)
 			parent.socketbase[socket_base_num]=null;
 
-		parent.log("Disonnected: "+name+" ("+my_socket.getInetAddress()+") {"+reason+"}");
+		logger.debug("Disonnected: "+name+" ("+my_socket.getInetAddress()+") {"+reason+"}");
 	}
 
 	public void endIt() {
@@ -182,8 +198,8 @@ public class DSpiresSocket extends Thread {
 	}
 
 	public void startUp() throws Exception {
+		
 		objectOutputStream = new ObjectOutputStream(my_socket.getOutputStream());
-		//out = new PrintWriter(new BufferedOutputStream(my_socket.getOutputStream()),true);
 		in = new BufferedReader(new InputStreamReader(my_socket.getInputStream()));
 
 		sight = new Vector();
@@ -276,7 +292,7 @@ public class DSpiresSocket extends Thread {
 
 				savePlayerData();
 
-				parent.log("Created: "+name+" ("+my_socket.getInetAddress()+")");
+				logger.debug("Created: "+name+" ("+my_socket.getInetAddress()+")");
 				parent.created++;
 				parent.channelBroadcast(name+" has entered DragonSpires for the first time.",parent.INFO_CHANNEL);
 				loggedin=true;
@@ -525,7 +541,7 @@ public class DSpiresSocket extends Thread {
 
 				i.close();
 
-				parent.log("Logged in: "+name+" ("+my_socket.getInetAddress()+")");
+				logger.debug("Logged in: "+name+" ("+my_socket.getInetAddress()+")");
 				parent.channelBroadcast(name+" has entered DragonSpires.",parent.INFO_CHANNEL);
 
 				for (int n = 0; n < channels.length; n++) {
@@ -571,7 +587,7 @@ public class DSpiresSocket extends Thread {
 			}			
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e);
 		}
 		return -1;
 	}
@@ -696,8 +712,6 @@ public class DSpiresSocket extends Thread {
 	}
 
 	public void protocol(String incoming) {
-			//if (parent.LOG_COMMANDS)
-			//	parent.logCommands(incoming, this);
 
 			if (stateCheck!=0) {
 				if (doStateChecker(incoming))
