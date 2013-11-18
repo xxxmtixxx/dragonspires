@@ -189,45 +189,6 @@ public class DSpiresServer extends Thread {
 
 	public void startServer() throws Exception {
 
-
-	try {
-			int savelog=100;
-			File afile,bfile;
-
-			// Cycle server log save
-			for (int i=savelog-1;i>0;i--) {
-				afile=new File("../log/server.log_"+i);
-				if (afile.exists()) {
-					bfile=new File("../log/server.log_"+(i+1));
-					afile.renameTo(bfile);
-				}
-			}
-			afile=new File("../log/server.log");
-			bfile=new File("../log/server.log_1");
-			afile.renameTo(bfile);
-
-			// Cycle error log save
-			for (int i=savelog-1;i>0;i--) {
-				afile=new File("../log/error.log_"+i);
-				if (afile.exists()) {
-					bfile=new File("../log/error.log_"+(i+1));
-					afile.renameTo(bfile);
-				}
-			}
-			afile=new File("../log/error.log");
-			bfile=new File("../log/error.log_1");
-			afile.renameTo(bfile);
-
-			FileOutputStream fos = new FileOutputStream(new File("../log/server.log"));
-			FileOutputStream fos2 = new FileOutputStream(new File("../log/error.log"));
-			if (LOG_COMMANDS)
-				commandLog = new PrintStream(new FileOutputStream(new File("../log/commands.log")));
-			System.setErr(new PrintStream(fos2));
-			System.setOut(new PrintStream(fos));
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
 		new DSPingServer();
 		new DSQueryServer(this);
 		dspct = new DSPCleanupThread(this);
