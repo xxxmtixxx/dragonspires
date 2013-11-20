@@ -138,7 +138,7 @@ public class DSpiresSocket extends Thread {
 					incoming = in.readLine();
 				}
 				catch (Exception e) {
-					logger.error(e);
+					logger.error("error", e);
 					continue;
 				}
 
@@ -156,7 +156,7 @@ public class DSpiresSocket extends Thread {
 			if (!(e instanceof java.net.SocketException
 				|| e instanceof java.io.IOException)) {
 				System.err.println("Name: "+name);
-				logger.error(e);
+				logger.error("error", e);
 			}
 
 			closeIt(e.toString());
@@ -179,7 +179,7 @@ public class DSpiresSocket extends Thread {
 			my_socket.close();
 		}
 		catch (Exception e) {
-			logger.error(e);
+			logger.error("error", e);
 		}
 
 		if (parent.socketbase[socket_base_num]==this)
@@ -193,7 +193,7 @@ public class DSpiresSocket extends Thread {
 			quit();
 		}
 		catch (Exception e) {
-			logger.error(e);
+			logger.error("error", e);
 		}
 	}
 
@@ -217,7 +217,7 @@ public class DSpiresSocket extends Thread {
 			objectOutputStream.writeObject(new ServerMessage(msg));
 			objectOutputStream.flush();
 		} catch(Exception e) {
-			logger.error(e);
+			logger.error("error", e);
 		}
 	}
 
@@ -233,7 +233,7 @@ public class DSpiresSocket extends Thread {
 				incoming = in.readLine();
 			}
 			catch (Exception e) {
-				logger.error(e);
+				logger.error("error", e);
 				continue;
 			}
 
@@ -587,7 +587,7 @@ public class DSpiresSocket extends Thread {
 			}			
 		}
 		catch (Exception e) {
-			logger.error(e);
+			logger.error("error", e);
 		}
 		return -1;
 	}
@@ -694,7 +694,7 @@ public class DSpiresSocket extends Thread {
 		}
 		catch (IOException e) {
 			System.err.println("Save(0) exception: "+e.getMessage());
-			logger.error(e);
+			logger.error("error", e);
 			try { newfile.delete(); } catch (Exception ex) {}
 			if (e.getMessage().equals("No space left on device")) {
 				parent.saving=false;
@@ -1087,7 +1087,7 @@ public class DSpiresSocket extends Thread {
 					sleep(600);
 				}
 				catch (Exception e) {
-					logger.error(e);
+					logger.error("error", e);
 				}	
 			}
 
@@ -5804,7 +5804,7 @@ public class DSpiresSocket extends Thread {
 
 				}
 				catch (Exception e) {
-					logger.error(e);
+					logger.error("error", e);
 				}
 
 				parent.channelBroadcast(name+" has left DragonSpires.",parent.INFO_CHANNEL);

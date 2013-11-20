@@ -172,7 +172,7 @@ public class DSpiresServer extends Thread {
 			URI configuration = this.getClass().getClassLoader().getResource("log4j2.xml").toURI();
 			Configurator.initialize("config", null, configuration);
 		} catch(URISyntaxException e) {
-			logger.error(e);
+			logger.error("error", e);
 		}
 	}
 
@@ -623,7 +623,7 @@ public class DSpiresServer extends Thread {
 		o.close();
 		}
 		catch (Exception e) {
-			logger.error(e);
+			logger.error("error", e);
 		}
 	}
 	public void globalBroadcast(String message) {
@@ -917,7 +917,7 @@ public class DSpiresServer extends Thread {
 			}
 		}
 		catch (IOException e) {
-			logger.error(e);
+			logger.error("error", e);
 		}
 		
 		return motdc;
