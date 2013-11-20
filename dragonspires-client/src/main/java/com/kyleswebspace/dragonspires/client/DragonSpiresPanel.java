@@ -1186,7 +1186,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		else {
 			ledin = -100;
 			append("The version of DragonSpires you're using is out of date.",3);
-			append("Get the update at: http://stuff2do.systs.net/dspire",3);
+			append("Get the update at: http://dragonspires.kyleswebspace.com",3);
 			append("",0);
 			append("If you're getting this message in your web browser, clear your browser's cache and restart your web browser.",3);
 			append("",0);
