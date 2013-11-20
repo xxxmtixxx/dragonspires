@@ -128,19 +128,14 @@ public class DSpiresSocket extends Thread {
 
 			setPriority(6);
 			// Start main loop
-			String incoming;
+			String incoming = null;
 			while (true) {
 				if (++yieldcount > 10) {
 					yieldcount = 0;
 					yield();
 				}
-				try {
-					incoming = in.readLine();
-				}
-				catch (Exception e) {
-					logger.error("error", e);
-					continue;
-				}
+				
+				incoming = in.readLine();
 
 				if (incoming==null)
 					break;
