@@ -134,13 +134,13 @@ public class DSpiresSocket extends Thread {
 					yieldcount = 0;
 					yield();
 				}
-				//try {
+				try {
 					incoming = in.readLine();
-				//}
-				//catch (InterruptedIOException iie) {
-				//	//iie.printStackTrace();
-				//	continue;
-				//}
+				}
+				catch (Exception e) {
+					logger.error(e);
+					continue;
+				}
 
 				if (incoming==null)
 					break;
@@ -156,7 +156,7 @@ public class DSpiresSocket extends Thread {
 			if (!(e instanceof java.net.SocketException
 				|| e instanceof java.io.IOException)) {
 				System.err.println("Name: "+name);
-				e.printStackTrace();
+				logger.error(e);
 			}
 
 			closeIt(e.toString());
@@ -179,7 +179,7 @@ public class DSpiresSocket extends Thread {
 			my_socket.close();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e);
 		}
 
 		if (parent.socketbase[socket_base_num]==this)
@@ -193,7 +193,7 @@ public class DSpiresSocket extends Thread {
 			quit();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e);
 		}
 	}
 
@@ -210,15 +210,14 @@ public class DSpiresSocket extends Thread {
 	}
 
 	public void pSend(String msg) {
-		//This could be useful for counting bytes sent later on.
-		//out.println(msg);
-		//System.out.println(msg);
+		
 		try {
+			logger.trace("Server sending message: " + msg);
+			
 			objectOutputStream.writeObject(new ServerMessage(msg));
 			objectOutputStream.flush();
 		} catch(Exception e) {
-			e.printStackTrace();
-			System.err.println(e.getMessage());
+			logger.error(e);
 		}
 	}
 
@@ -230,12 +229,13 @@ public class DSpiresSocket extends Thread {
 				yieldcount = 0;
 				yield();
 			}
-			//try {
+			try {
 				incoming = in.readLine();
-			//}
-			//catch (InterruptedIOException iie) {
-			//	continue;
-			//}
+			}
+			catch (Exception e) {
+				logger.error(e);
+				continue;
+			}
 
 			if (incoming==null) {
 				closeIt("preLogin:null");
@@ -694,7 +694,7 @@ public class DSpiresSocket extends Thread {
 		}
 		catch (IOException e) {
 			System.err.println("Save(0) exception: "+e.getMessage());
-			e.printStackTrace();
+			logger.error(e);
 			try { newfile.delete(); } catch (Exception ex) {}
 			if (e.getMessage().equals("No space left on device")) {
 				parent.saving=false;
@@ -1087,7 +1087,7 @@ public class DSpiresSocket extends Thread {
 					sleep(600);
 				}
 				catch (Exception e) {
-					e.printStackTrace();
+					logger.error(e);
 				}	
 			}
 
@@ -1276,10 +1276,17 @@ public class DSpiresSocket extends Thread {
 
 		pSend("$S"+str+"\n$D"+def+"\n$A"+agi+"\n$X"+dex+"\n$W"+wiz,c);*/
 
-		for (int i = 0; i < inventory.length; i++) {
-			invweight+=parent.itemdefs[inventory[i]][5];
-		}
+		calculateInventoryWeight();
 	}
+	
+	protected void calculateInventoryWeight() {
+		
+		invweight = 0;
+		
+		for (int i = 0; i < inventory.length; i++)
+			invweight+=parent.itemdefs[inventory[i]][5];
+	}
+
 	public void sightSend(String message) {
 		DSpiresSocket c;
 		//synchronized (sight) {
@@ -5797,7 +5804,7 @@ public class DSpiresSocket extends Thread {
 
 				}
 				catch (Exception e) {
-					e.printStackTrace();
+					logger.error(e);
 				}
 
 				parent.channelBroadcast(name+" has left DragonSpires.",parent.INFO_CHANNEL);

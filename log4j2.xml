@@ -2,12 +2,15 @@
 <Configuration status="debug" name="Dragonspires">
 	<Appenders>
 		<RollingRandomAccessFile name="RollingRandomAccessFile"
-			fileName="../log/server.log" filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+			fileName="../log/server.log" 
+				filePattern="../log/dragonspires-%d{MM-dd-yyyy}-%i.log"
+				immediateFlush="true">
 			<PatternLayout>
 				<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
 			</PatternLayout>
 			<Policies>
-				<SizeBasedTriggeringPolicy size="250 MB" />
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100 MB" />
 			</Policies>
 		</RollingRandomAccessFile>
 	</Appenders>

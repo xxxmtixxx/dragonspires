@@ -39,42 +39,38 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 import java.awt.Button;
-import java.awt.Canvas;
 import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Event;
 import java.awt.Font;
 import java.awt.FontMetrics;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.List;
 import java.awt.MediaTracker;
+import java.awt.Panel;
+import java.awt.Rectangle;
 import java.awt.TextArea;
 import java.awt.TextField;
 import java.awt.Toolkit;
-import java.awt.Panel;
-import java.awt.Frame;
-import java.awt.Rectangle;
-import java.awt.image.*;
-import java.net.Socket;
-import java.net.URL;
-import java.io.BufferedInputStream;
+import java.awt.image.CropImageFilter;
+import java.awt.image.FilteredImageSource;
+import java.awt.image.ImageProducer;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.PrintStream;
-import java.io.FileOutputStream;
-import java.io.FileInputStream;
-import java.io.File;
 import java.io.StringReader;
-import java.util.Vector;
+import java.net.Socket;
+import java.net.URL;
 import java.util.StringTokenizer;
 //import audio.*;
-
-
+import java.util.Vector;
 
 import main.java.com.kyleswebspace.dragonspires.server.ServerMessage;
 
@@ -454,6 +450,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 				log=true;
 			}
 			catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 			
@@ -594,7 +591,9 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			try {
 				s.setSoLinger(true,0);
 			}
-			catch (Exception e) {}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
 
 			objectInputStream = new ObjectInputStream(s.getInputStream());
 			o = new PrintStream(new BufferedOutputStream(s.getOutputStream()), true);
@@ -611,7 +610,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			//return true;
 		}
 		catch (Exception e) {
-			//e.printStackTrace();
+			e.printStackTrace();
 			connstat = "Can't connect. That sucks.";
 			repaint(43,325,219,27);
 			return;
@@ -620,67 +619,74 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		try {
 			ServerMessage serverMessage = null;
 			while ((serverMessage = (ServerMessage)objectInputStream.readObject()) != null) {
-
-				String incoming = null;
-				BufferedReader reader = new BufferedReader(new StringReader(serverMessage.getActionString()));
-				while((incoming = reader.readLine()) != null) {
-					if (ledin==1) {
-						switch (incoming.charAt(0)) {
-							case '<':
-								map.placePlayer(incoming);
-								continue;
-							case '@':
-								//updatePos(incoming.charAt(1)-32,incoming.charAt(2)-32);
-								map.xpos = incoming.charAt(1)-32;
-								map.ypos = incoming.charAt(2)-32;
-								map.drawTiles = 1;
-								map.justmoved=3;
-								continue;
-							case '#':
-								updateStam(incoming.charAt(1)-32);
-								continue;
-							case '!':
-								if (amapplet) {
-									if (dsapplet.sound.ps.getState())
-										dsapplet.sound.play(Integer.parseInt(incoming.substring(1,incoming.length())));
-								}
-								continue;
-							case '>':
-								map.placeItem(incoming);
-								continue;
-							case '%':
-								updateFeet(map.decode(incoming.charAt(1)-32,incoming.charAt(2)-32));
-								continue;
+				
+				try {
+					String incoming = null;
+					BufferedReader reader = new BufferedReader(new StringReader(serverMessage.getActionString()));
+					while((incoming = reader.readLine()) != null) {
+						if (ledin==1) {
+							switch (incoming.charAt(0)) {
+								case '<':
+									map.placePlayer(incoming);
+									continue;
+								case '@':
+									//updatePos(incoming.charAt(1)-32,incoming.charAt(2)-32);
+									map.xpos = incoming.charAt(1)-32;
+									map.ypos = incoming.charAt(2)-32;
+									map.drawTiles = 1;
+									map.justmoved=3;
+									continue;
+								case '#':
+									updateStam(incoming.charAt(1)-32);
+									continue;
+								case '!':
+									if (amapplet) {
+										if (dsapplet.sound.ps.getState())
+											dsapplet.sound.play(Integer.parseInt(incoming.substring(1,incoming.length())));
+									}
+									continue;
+								case '>':
+									map.placeItem(incoming);
+									continue;
+								case '%':
+									updateFeet(map.decode(incoming.charAt(1)-32,incoming.charAt(2)-32));
+									continue;
+							}
+						}
+		
+						try {
+							switch (incoming.charAt(0)) {
+								case '(':
+								case '[':
+									incomingText(incoming);
+									continue;
+							}
+						}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+		
+						switch (ledin) {
+							case 1:
+								secondaryIncoming(incoming);
+								break;
+							case 0:
+								checkPreLogin(incoming);
+								break;
+							default:
+								checkIntro(incoming);
 						}
 					}
-	
-					try {
-						switch (incoming.charAt(0)) {
-							case '(':
-							case '[':
-								incomingText(incoming);
-								continue;
-						}
-					}
-					catch (Exception e) {}
-	
-					switch (ledin) {
-						case 1:
-							secondaryIncoming(incoming);
-							break;
-						case 0:
-							checkPreLogin(incoming);
-							break;
-						default:
-							checkIntro(incoming);
-					}
-				}
+				} catch(Exception e) {
+					e.printStackTrace();
+					continue;
+				} 
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//System.out.println("Got null, apparently.");
+		
+		System.out.println("Got null, apparently.");
 		stop();
 	}
 
@@ -825,12 +831,16 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		try {
 			append("* Lost connection to DragonSpires.",2);
 		}
-		catch (Exception e) {}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 		try {
 			o.println("quit");
 			o.flush();
 		}
-		catch (Exception e) {}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 		if (listen != null) {
 			listen.stop();
 			listen = null;
@@ -1061,6 +1071,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 						g.drawImage(preview,460,45,this);
 					}
 					catch (NullPointerException e) {
+						e.printStackTrace();
 					}
 				}
 		}
@@ -1081,7 +1092,9 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			//g.setColor(dsbg);
 			//g.drawRect(x-5,422,fm.stringWidth(connstat)+10,19);
 		}
-		catch (NullPointerException e) {}
+		catch (NullPointerException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void clearMoveBorder() {
@@ -1108,7 +1121,9 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			else
 				return getClass().getResourceAsStream("resources/" + name);
 		}
-		catch (Exception e) {}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -1125,7 +1140,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			return new URL(path+file);
 	 	}
 		catch (Exception e) {
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -1227,7 +1242,8 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 				tracker.waitForID(i);
 				while(!(tracker.checkID(i))){}
 			}
-			catch (InterruptedException e) {
+			catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 
@@ -1245,8 +1261,9 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		try {
 			tracker.waitForAll();
 		}
-		catch (Exception e) {}
-
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		connstat = "Processing...";
 		repaint(43,325,219,27);
@@ -1536,6 +1553,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 				preview = null;
 			}
 			catch(NullPointerException e) {
+				e.printStackTrace();
 			}
 			classwords = null;
 			connstat = null;
@@ -1755,7 +1773,9 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		try {
 			mt.waitForAll();
 		}
-		catch (Exception e) {}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		ImageProducer[] ips = {fi.getSource(),mi.getSource()};
 
@@ -1803,7 +1823,9 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 				mt.addImage(stuff[i],i);
 		}
 
-		try { mt.waitForAll(); } catch (Exception e) {}
+		try { mt.waitForAll(); } catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		if (stuff[0]!=null)
 			g.drawImage(stuff[0],0,0,this);
@@ -2141,6 +2163,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 					line3 = "";
 			}
 			catch(StringIndexOutOfBoundsException e) {
+				e.printStackTrace();
 				line3 = "";
 			}
 			//repaint(162,372,360,26);
@@ -2152,6 +2175,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 					line2 = "";
 			}
 			catch(StringIndexOutOfBoundsException e) {
+				e.printStackTrace();
 				line2 = "";
 			}
 			//repaint(162,372,360,26);
@@ -2163,10 +2187,9 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 					line1 = "";
 			}
 			catch(StringIndexOutOfBoundsException e) {
+				e.printStackTrace();
 				line1 = "";
 			}
-			//repaint(162,372,360,26);
-			//drawTypeText();
 		}
 		drawTypeText(g4panel);
 	}
@@ -3092,7 +3115,9 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		try {
 			mt.waitForAll();
 		}
-		catch (Exception e) {}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		equipmentRepaint();
 	}
