@@ -132,7 +132,7 @@ public class DSpiresServer extends Thread {
 
 		try {
 			startServer();
-			server = new ServerSocket(PORT,1);//,InetAddress.getByName("stuff2do"));
+			server = new ServerSocket(PORT,1);
 
 			while (true) {
 				client = server.accept();
@@ -177,9 +177,9 @@ public class DSpiresServer extends Thread {
 	}
 
 	public void basicSocketCloseMessage(Socket s, String reason, String message) throws IOException {
-		PrintWriter o = new PrintWriter(new BufferedOutputStream(s.getOutputStream()));
+		ObjectOutputStream o = new ObjectOutputStream(s.getOutputStream());
 		logger.debug("Disonnected:  ("+s.getInetAddress()+") {"+reason+"}");
-		o.println(message);
+		o.writeObject(new ServerMessage(message));
 		o.flush();
 		o.close();
 		//s.shutdownOutput();
