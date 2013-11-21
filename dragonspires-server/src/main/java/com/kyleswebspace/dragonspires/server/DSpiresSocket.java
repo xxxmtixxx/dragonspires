@@ -164,6 +164,8 @@ public class DSpiresSocket extends Thread {
 	}
 
 	public void closeIt(String reason) {
+		logger.trace("Closing socket..");
+		
 		if (closed)
 			return;
 		else
@@ -217,7 +219,7 @@ public class DSpiresSocket extends Thread {
 	}
 
 	public void preLoginLoop() throws Exception {
-		String incoming;
+		String incoming = null;
 
 		while (true) {
 			if (++yieldcount > 10) {
@@ -229,7 +231,7 @@ public class DSpiresSocket extends Thread {
 			}
 			catch (Exception e) {
 				logger.error("error", e);
-				continue;
+				break;
 			}
 
 			if (incoming==null) {
@@ -313,6 +315,7 @@ public class DSpiresSocket extends Thread {
 			else
 				closeIt("Hack?[1]");
 		}
+		closeIt("ConnectionReset?");
 	}
 
 	public int doLogin(String name, String password) {
