@@ -177,9 +177,9 @@ public class DSpiresServer extends Thread {
 	}
 
 	public void basicSocketCloseMessage(Socket s, String reason, String message) throws IOException {
-		ObjectOutputStream o = new ObjectOutputStream(s.getOutputStream());
+		PrintWriter o = new PrintWriter(new BufferedWriter(new OutputStreamWriter(s.getOutputStream())), true);
 		logger.debug("Disonnected:  ("+s.getInetAddress()+") {"+reason+"}");
-		o.writeObject(new ServerMessage(message));
+		o.println(message);
 		o.flush();
 		o.close();
 		//s.shutdownOutput();

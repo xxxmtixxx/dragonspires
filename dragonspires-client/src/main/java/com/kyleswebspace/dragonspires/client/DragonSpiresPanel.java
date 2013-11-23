@@ -63,6 +63,7 @@ import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.PrintStream;
 import java.io.StringReader;
@@ -72,12 +73,10 @@ import java.util.StringTokenizer;
 //import audio.*;
 import java.util.Vector;
 
-import main.java.com.kyleswebspace.dragonspires.server.ServerMessage;
-
 public class DragonSpiresPanel extends Panel implements Runnable {
 
-	final char version[] = {'V','0','0','7','9'};
-	private final static String[] habl = {"dragonspires.kyleswebspace.com"};
+	final char version[] = {'V','0','0','8','1'};
+	private final static String[] habl = {"localhost"};
 
 	final static String itemnames[]= {"nothing","some paper",
                                                                 "light armor",
@@ -351,7 +350,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 	Font f,fs;
 	FontMetrics fm,fms;
 
-	private ObjectInputStream objectInputStream;
+	private BufferedReader in = null;
 	private PrintStream o;
 	private Socket s;
 	PrintStream logstream;
@@ -595,7 +594,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 				e.printStackTrace();
 			}
 
-			objectInputStream = new ObjectInputStream(s.getInputStream());
+			in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			o = new PrintStream(new BufferedOutputStream(s.getOutputStream()), true);
 
 			connstat = "Connected.";
@@ -617,71 +616,62 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		}
 
 		try {
-			ServerMessage serverMessage = null;
-			while ((serverMessage = (ServerMessage)objectInputStream.readObject()) != null) {
-				
-				try {
-					String incoming = null;
-					BufferedReader reader = new BufferedReader(new StringReader(serverMessage.getActionString()));
-					while((incoming = reader.readLine()) != null) {
-						if (ledin==1) {
-							switch (incoming.charAt(0)) {
-								case '<':
-									map.placePlayer(incoming);
-									continue;
-								case '@':
-									//updatePos(incoming.charAt(1)-32,incoming.charAt(2)-32);
-									map.xpos = incoming.charAt(1)-32;
-									map.ypos = incoming.charAt(2)-32;
-									map.drawTiles = 1;
-									map.justmoved=3;
-									continue;
-								case '#':
-									updateStam(incoming.charAt(1)-32);
-									continue;
-								case '!':
-									if (amapplet) {
-										if (dsapplet.sound.ps.getState())
-											dsapplet.sound.play(Integer.parseInt(incoming.substring(1,incoming.length())));
-									}
-									continue;
-								case '>':
-									map.placeItem(incoming);
-									continue;
-								case '%':
-									updateFeet(map.decode(incoming.charAt(1)-32,incoming.charAt(2)-32));
-									continue;
+			String incoming = null;
+			while((incoming = in.readLine()) != null) {
+				if (ledin==1) {
+					switch (incoming.charAt(0)) {
+						case '<':
+							map.placePlayer(incoming);
+							continue;
+						case '@':
+							//updatePos(incoming.charAt(1)-32,incoming.charAt(2)-32);
+							map.xpos = incoming.charAt(1)-32;
+							map.ypos = incoming.charAt(2)-32;
+							map.drawTiles = 1;
+							map.justmoved=3;
+							continue;
+						case '#':
+							updateStam(incoming.charAt(1)-32);
+							continue;
+						case '!':
+							if (amapplet) {
+								if (dsapplet.sound.ps.getState())
+									dsapplet.sound.play(Integer.parseInt(incoming.substring(1,incoming.length())));
 							}
-						}
-		
-						try {
-							switch (incoming.charAt(0)) {
-								case '(':
-								case '[':
-									incomingText(incoming);
-									continue;
-							}
-						}
-						catch (Exception e) {
-							e.printStackTrace();
-						}
-		
-						switch (ledin) {
-							case 1:
-								secondaryIncoming(incoming);
-								break;
-							case 0:
-								checkPreLogin(incoming);
-								break;
-							default:
-								checkIntro(incoming);
-						}
+							continue;
+						case '>':
+							map.placeItem(incoming);
+							continue;
+						case '%':
+							updateFeet(map.decode(incoming.charAt(1)-32,incoming.charAt(2)-32));
+							continue;
 					}
-				} catch(Exception e) {
+				}
+
+				try {
+					switch (incoming.charAt(0)) {
+						case '(':
+						case '[':
+							incomingText(incoming);
+							continue;
+					}
+				}
+				catch (Exception e) {
 					e.printStackTrace();
-					continue;
-				} 
+				}
+
+				switch (ledin) {
+					case 1:
+						secondaryIncoming(incoming);
+						break;
+					case 0:
+						checkPreLogin(incoming);
+						break;
+					default:
+						checkIntro(incoming);
+				}
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -852,7 +842,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 
 		try {
 			o.close();
-			objectInputStream.close();
+			in.close();
 			s.close();
 		}
 		catch (Exception e) {

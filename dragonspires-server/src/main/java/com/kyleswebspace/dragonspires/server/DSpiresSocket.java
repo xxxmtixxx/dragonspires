@@ -46,6 +46,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Enumeration;
 import java.util.NoSuchElementException;
@@ -86,8 +88,7 @@ public class DSpiresSocket extends Thread {
 	Socket my_socket;
 	int socket_base_num;
 	BufferedReader in;
-	//PrintWriter out;
-	ObjectOutputStream objectOutputStream;
+	PrintWriter out;
 
 	String name="",colorstring="   !",ocolorstring="   !",desc="",pstring="!'+!",password="",email="Unspecified",homepage="Unspecified",title="the newbie";
 	char cx='6',cy='J';
@@ -171,7 +172,7 @@ public class DSpiresSocket extends Thread {
 		else
 			closed=true;
 		try {
-			objectOutputStream.close();
+			out.close();
 			in.close();
 			my_socket.close();
 		}
@@ -196,14 +197,14 @@ public class DSpiresSocket extends Thread {
 
 	public void startUp() throws Exception {
 		
-		objectOutputStream = new ObjectOutputStream(my_socket.getOutputStream());
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(my_socket.getOutputStream())), true);
 		in = new BufferedReader(new InputStreamReader(my_socket.getInputStream()));
 
 		sight = new Vector();
 		inventory = new int[35];
 
 		pSend(parent.motd);
-		pSend("Dragonroar!\nV0079");
+		pSend("Dragonroar!\nV0081");
 	}
 
 	public void pSend(String msg) {
@@ -211,8 +212,7 @@ public class DSpiresSocket extends Thread {
 		try {
 			logger.trace("Server sending message: " + msg);
 			
-			objectOutputStream.writeObject(new ServerMessage(msg));
-			objectOutputStream.flush();
+			out.println(msg);
 		} catch(Exception e) {
 			logger.error("error", e);
 		}
