@@ -449,7 +449,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 				log=true;
 			}
 			catch (Exception e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 		}
 			
@@ -591,7 +591,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 				s.setSoLinger(true,0);
 			}
 			catch (Exception e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 
 			in = new BufferedReader(new InputStreamReader(s.getInputStream(), "UTF-8"));
@@ -609,7 +609,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			//return true;
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 			connstat = "Can't connect. That sucks.";
 			repaint(43,325,219,27);
 			return;
@@ -657,7 +657,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 					}
 				}
 				catch (Exception e) {
-					e.printStackTrace();
+//					e.printStackTrace();
 				}
 
 				switch (ledin) {
@@ -673,7 +673,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			}
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 		
 		System.out.println("Got null, apparently.");
@@ -750,7 +750,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 							showad=true;
 						}
 						catch (Exception e) {
-							e.printStackTrace();
+//							e.printStackTrace();
 						}
 					}
 					repaint();
@@ -822,14 +822,14 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			append("* Lost connection to DragonSpires.",2);
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 		try {
 			o.println("quit");
 			o.flush();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 		if (listen != null) {
 			listen.stop();
@@ -846,7 +846,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			s.close();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 
 		if (logstream!=null) logstream.close();
@@ -1061,7 +1061,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 						g.drawImage(preview,460,45,this);
 					}
 					catch (NullPointerException e) {
-						e.printStackTrace();
+//						e.printStackTrace();
 					}
 				}
 		}
@@ -1083,7 +1083,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			//g.drawRect(x-5,422,fm.stringWidth(connstat)+10,19);
 		}
 		catch (NullPointerException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 
@@ -1112,7 +1112,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 				return getClass().getResourceAsStream("resources/" + name);
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 		return null;
 	}
@@ -1130,7 +1130,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			return new URL(path+file);
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 		return null;
 	}
@@ -1233,7 +1233,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 				while(!(tracker.checkID(i))){}
 			}
 			catch (Exception e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 		}
 
@@ -1252,7 +1252,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			tracker.waitForAll();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 
 		connstat = "Processing...";
@@ -1272,7 +1272,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			//	System.out.println("["+n+"]: "+baseColorIndex[n]);
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 
 		ItemImgSep iis = new ItemImgSep(map,ttti[4],toolkit);
@@ -1543,7 +1543,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 				preview = null;
 			}
 			catch(NullPointerException e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 			classwords = null;
 			connstat = null;
@@ -1764,7 +1764,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			mt.waitForAll();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 
 		ImageProducer[] ips = {fi.getSource(),mi.getSource()};
@@ -1814,7 +1814,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		}
 
 		try { mt.waitForAll(); } catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 
 		if (stuff[0]!=null)
@@ -2153,7 +2153,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 					line3 = "";
 			}
 			catch(StringIndexOutOfBoundsException e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 				line3 = "";
 			}
 			//repaint(162,372,360,26);
@@ -2165,7 +2165,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 					line2 = "";
 			}
 			catch(StringIndexOutOfBoundsException e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 				line2 = "";
 			}
 			//repaint(162,372,360,26);
@@ -2177,7 +2177,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 					line1 = "";
 			}
 			catch(StringIndexOutOfBoundsException e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 				line1 = "";
 			}
 		}
@@ -3027,7 +3027,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		}
 		catch (Exception e) {
 			append(e.toString(),0);
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 	public void uploadScript() {
@@ -3050,7 +3050,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		}
 		catch (Exception e) {
 			append(e.toString(),0);
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 	void removeMapBox() {
@@ -3106,7 +3106,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			mt.waitForAll();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 
 		equipmentRepaint();

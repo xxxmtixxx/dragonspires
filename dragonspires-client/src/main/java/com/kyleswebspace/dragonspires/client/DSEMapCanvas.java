@@ -363,7 +363,7 @@ public class DSEMapCanvas extends Canvas {
 			i.close();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 	public int decode(int head, int tack) {
@@ -510,7 +510,9 @@ public class DSEMapCanvas extends Canvas {
 		parent.append("Map saved.");
 		parent.saved=true;
 		}
-		catch (Exception e) { e.printStackTrace(); }
+		catch (Exception e) {
+//			e.printStackTrace(); 
+		}
 		switch (currseltype) {
 			case 1:
 				itemmap[xpos][ypos]=curritemsel;

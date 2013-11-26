@@ -814,7 +814,9 @@ public class DSEdit extends Panel {
 		}
 		o.close();
 		}
-		catch (Exception e) { e.printStackTrace(); }
+		catch (Exception e) { 
+//			e.printStackTrace(); 
+		}
 	}
 	public void dataString() {
 		line1="["+map.mapname+"] X="+map.xpos+",Y="+map.ypos+((map.currseltype==1) ? (" item="+map.curritemsel) : (" floor="+map.currfloorsel));

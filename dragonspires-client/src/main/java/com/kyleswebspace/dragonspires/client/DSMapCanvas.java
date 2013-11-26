@@ -600,7 +600,7 @@ public class DSMapCanvas extends Canvas {
 				}
 			}
 			catch (Exception e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 		}
 		g.setColor(Color.black);
@@ -720,7 +720,7 @@ public class DSMapCanvas extends Canvas {
 			//	i.close();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 	public void downloadMapData(String data) {
@@ -759,7 +759,7 @@ public class DSMapCanvas extends Canvas {
 			}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 	public int decode(int head, int tack) {
