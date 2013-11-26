@@ -75,8 +75,8 @@ import java.util.Vector;
 
 public class DragonSpiresPanel extends Panel implements Runnable {
 
-	final char version[] = {'V','0','0','8','1'};
-	private final static String[] habl = {"localhost"};
+	final char version[] = {'V','0','0','8','2'};
+	private final static String[] habl = {"dragonspires.kyleswebspace.com"};
 
 	final static String itemnames[]= {"nothing","some paper",
                                                                 "light armor",
