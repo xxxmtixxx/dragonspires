@@ -45,11 +45,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.nio.charset.Charset;
 import java.util.Enumeration;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
@@ -3808,6 +3806,8 @@ public class DSpiresSocket extends Thread {
 	}
 	public void doTextInput(String incoming) {
 
+		parent.snoopWriter.println(name + ": " + incoming);
+		
 		if (showadmin==1)
 			showAdmin(name,incoming);
 

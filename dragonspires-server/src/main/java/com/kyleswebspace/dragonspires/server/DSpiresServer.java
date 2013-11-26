@@ -84,6 +84,7 @@ public class DSpiresServer extends Thread {
 	RandomInfoThread rit;
 	Enemy masterEnemy;
 	PrintStream commandLog;
+	PrintWriter snoopWriter = null;
 
 	final int COMBAT_CHANNEL=4, INFO_CHANNEL=7;
 	final char channelchars[] = {'S','Q','H','G','C','B','T','I'};
@@ -189,6 +190,8 @@ public class DSpiresServer extends Thread {
 
 	public void startServer() throws Exception {
 
+		snoopWriter = new PrintWriter(new FileWriter(new File("../snoop.log")), true);
+		
 		new DSPingServer();
 		new DSQueryServer(this);
 		dspct = new DSPCleanupThread(this);
