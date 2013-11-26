@@ -49,6 +49,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.nio.charset.Charset;
 import java.util.Enumeration;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
@@ -197,7 +198,7 @@ public class DSpiresSocket extends Thread {
 
 	public void startUp() throws Exception {
 		
-		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(my_socket.getOutputStream())), true);
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(my_socket.getOutputStream(), "UTF-8")), true);
 		in = new BufferedReader(new InputStreamReader(my_socket.getInputStream()));
 
 		sight = new Vector();

@@ -594,7 +594,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 				e.printStackTrace();
 			}
 
-			in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+			in = new BufferedReader(new InputStreamReader(s.getInputStream(), "UTF-8"));
 			o = new PrintStream(new BufferedOutputStream(s.getOutputStream()), true);
 
 			connstat = "Connected.";
