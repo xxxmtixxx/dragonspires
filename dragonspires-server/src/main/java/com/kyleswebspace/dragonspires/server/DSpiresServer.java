@@ -190,7 +190,7 @@ public class DSpiresServer extends Thread {
 
 	public void startServer() throws Exception {
 
-		snoopWriter = new PrintWriter(new FileWriter(new File("../snoop.log")), true);
+		snoopWriter = new PrintWriter(new FileWriter(new File("../log/snoop.log")), true);
 		
 		new DSPingServer();
 		new DSQueryServer(this);
