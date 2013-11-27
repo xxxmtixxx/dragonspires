@@ -1,19 +1,19 @@
 DSP3.2
-/72.161.2.42
+/192.168.1.69
 Xerp
 bmanes
 !& %
 DAFUQ
-                                                                      
-      
- 0B
-000000001
-!  !   !
-p
+!D!e"Z O O O O O O O O O O O O O O O O O O Z O!d                    !$
+!_!C  
+ 8K
+000012772
+!  !!  !
+U
 20
-210
+192
  
- ,''
+!&'.
 xerpvimchey@gmail.com
 http://www.goatse.cx/
 teh Omnipotent

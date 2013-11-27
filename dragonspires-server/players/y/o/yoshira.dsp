@@ -4,16 +4,16 @@ Yoshira
 boobieman
 """!
 Yikes.
- K K![ K K![!P                                                        
-     s
- :I
-000000005
-!      !
+ K K![ K K![!P s                                                      
+      
+ 1A
+000000006
+!  !   !
 d
 20
-121
+210
  
 !'+!
 Unspecified
-Unspecified
+
 the newbie

@@ -1,19 +1,19 @@
 DSP3.2
-/24.240.43.195
+/192.168.1.69
 Tour|Guide
 bomber
 +**$
 It really is.
- O!M          "%      !F        !G Z":    "*   @    !Z!d!'   P       O
-"9!C  
+!$      !i Z  !D    !#        !&     Z   O"O": O   O O O O O O O O"*!\
+      
  9J
-000045689
-!  !   !
-8
+000111826
+!  !!  !
+Q
 20
-210
+204
  
  *),
 Unspecified
-Unspecified
+www.jolierules.com
 the newbie

@@ -3,17 +3,17 @@ DSP3.2
 Refused
 dv9000
 &' !
-Bla bla bla
-                                                                      
- % "  
- 9F
-000000000
-!      !
-f
+ofcurse
+ Y!% O O O V V V V V V V V V      !D!$                      # "}#\  !J
+"8!C  
+ 8A
+042768532
+!  !!  !
+A
 20
-210
+203
  
-!'+!
+!(",
 Unspecified
 Unspecified
-the newbie
+is sniffin dead

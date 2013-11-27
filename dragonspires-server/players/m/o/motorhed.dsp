@@ -1,17 +1,17 @@
 DSP3.2
-/82.209.149.186
+/98.74.165.132
 Motorhed
-123kyle
+ChocolateRain234
 )  #
-I made a game once.... then i decided to make comics......
-                                                                      
+sgsdfgdsfgd
+ Z                                                                    
       
- AW
-000000000
-!      !
+ 8E
+000000001
+! !!!!!!
 f
 20
-185
+210
  
 !)#+
 Unspecified

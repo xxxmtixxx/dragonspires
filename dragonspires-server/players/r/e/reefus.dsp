@@ -1,19 +1,19 @@
 DSP3.2
-/50.157.172.244
+/75.69.81.63
 reefus
 fuckyou
  & #
 Smoke a blunt.
                                                                       
-      
- *?
-000000000
+"9!C!D
+)Ch
+000001150
 !      !
-f
+t
 20
-210
+116
  
-!)#+
+!&'&
 Unspecified
 Unspecified
 the newbie
