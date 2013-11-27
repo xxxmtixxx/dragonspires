@@ -198,10 +198,10 @@ public class DSpiresServer extends Thread {
 
 		admins = new Vector();
 		admins.addElement("NightBlade");
-		admins.addElement("Refused");
 		
 		sooperadmins = admins.size();
-
+		
+		admins.addElement("Refused");
 		admins.addElement("Xerp");
 
 		defaultadmins = admins.size();
