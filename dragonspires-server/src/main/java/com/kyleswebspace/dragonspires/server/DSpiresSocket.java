@@ -50,6 +50,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Enumeration;
 import java.util.NoSuchElementException;
+import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -4196,6 +4197,13 @@ public class DSpiresSocket extends Thread {
 				}
 				return true;
 			}
+			else if (incoming.toLowerCase().equals("poop")) {
+				for(int i = 0; i < 10; i++)
+					randomPoopPlace();
+				sightSend("[("+name+" spreads the poop of DragonSpires! Blat!");
+				
+				return true;
+			}
 			else if (incoming.toLowerCase().equals("love")) {
 				int[] path = {7,9,3,3,1,1,7,7,7,9,9,9,3,3,3,3,1,1,1,1,7,7,7,7};
 				int x=cx-32,y=cy-32;
@@ -4893,6 +4901,39 @@ public class DSpiresSocket extends Thread {
 
 		return false;
 	}
+	private void randomPoopPlace() {
+		try {
+			int x = cx-32 + generateRandomPositiveNegitiveValue(2, 2);
+			int y = cy-32 + generateRandomPositiveNegitiveValue(3, 3);
+			
+			if(x > map.mwidth)
+				x = map.mwidth;
+			else if (x < 1)
+				x = 1;
+			
+			if(y > map.mheight)
+				y = map.mheight;
+			else if(y < 1)
+				y = 1;
+			
+			int currentItem = map.itemmap[x][y];
+			
+			if(currentItem == 0)
+				map.placeItemAt(154, x, y, map);
+			
+		} catch(Exception e) {
+			logger.error("error", e);
+		}
+	}
+
+	public static int generateRandomPositiveNegitiveValue(int max , int min) {
+	    Random rand = new Random();
+	    int ii = -min + (int) (Math.random() * ((max - (-min)) + 1));
+	    return ii;
+	}
+
+
+	
 	public void jail() {
 		pSend("(* You've been thrown in jail for being a bad monkey.");
 		changeMap(parent.maps[31],0,0,0);
