@@ -445,7 +445,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 			dsapplet = a;
 		else {
 			try {
-				logstream = new PrintStream(new FileOutputStream("dslog.txt"),true);
+				logstream = new PrintStream(new FileOutputStream("dslog.txt", true),true);
 				log=true;
 			}
 			catch (Exception e) {
