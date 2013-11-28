@@ -1,17 +1,17 @@
 DSP3.2
-/192.168.1.69
+/207.119.180.116
 Xerp
 bmanes
 !& %
 DAFUQ
 !D!e"Z O O O O O O O O O O O O O O O O O O Z O!d                    !$
 !_!C  
- 8K
-000012772
+ :J
+001512772
 !  !!  !
 U
 20
-192
+210
  
 !&'.
 xerpvimchey@gmail.com
