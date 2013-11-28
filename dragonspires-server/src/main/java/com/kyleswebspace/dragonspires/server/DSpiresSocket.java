@@ -267,7 +267,7 @@ public class DSpiresSocket extends Thread {
 						pfooti=1;
 						break;
 					case 2: // Bad pass.
-						pSend("NName already taken. Please try again.");
+						pSend("NName already taken. Please try again. If you've forgotten your password, contact Kyle on the Facebook Dragonspires group.");
 						break;
 				}					
 			}
