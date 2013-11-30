@@ -4129,12 +4129,12 @@ public class DSpiresSocket extends Thread {
 			/*else if (incoming.toLowerCase().startsWith("slit ")) {
 				DSpiresSocket s = getSocketByNearestString(incoming.toLowerCase().substring(incoming.indexOf(" ")+1));
 				if (s != null) {
-					pSend("[\""+name+" slits your sniffing throat.",s);
+					pSend("[\""+name+" slits your sniffing throat.");
 					new Slit(s);
 				}
 				return true;
-			}*/
-			/*else if (incoming.toLowerCase().startsWith("cleanup")) {
+			}
+			else if (incoming.toLowerCase().startsWith("cleanup")) {
 				parent.cleanup=!parent.cleanup;
 				if (!parent.cleanup) {
 					stopIt(parent.dspct);
@@ -4145,8 +4145,8 @@ public class DSpiresSocket extends Thread {
 					pSend("(Socket cleanup enabled.");
 				}
 				return true;
-			}*/
-			/*else if (incoming.toLowerCase().startsWith("portalto ")) {
+			}
+			else if (incoming.toLowerCase().startsWith("portalto ")) {
 				String mapname=incoming.substring(9,incoming.length());
 
 				File f = new File("../maps/"+mapname);
@@ -4195,49 +4195,6 @@ public class DSpiresSocket extends Thread {
 					map.addEnemy(new Nezerath(parent.nextx(cx-32,cy-32,facing),parent.nexty(cy-32,facing),true,map));
 					parent.nez=true;
 				}
-				return true;
-			}
-			else if (incoming.toLowerCase().equals("poop")) {
-				for(int i = 0; i < 10; i++)
-					randomPoopPlace();
-				sightSend("[("+name+" spreads the poop of DragonSpires! Blat!");
-				
-				return true;
-			}
-			else if (incoming.toLowerCase().equals("love")) {
-				int[] path = {7,9,3,3,1,1,7,7,7,9,9,9,3,3,3,3,1,1,1,1,7,7,7,7};
-				int x=cx-32,y=cy-32;
-				DSpiresSocket s=this;
-
-				sightSend("[("+name+" spreads the love of DragonSpires!");
-
-				map.limitedBroadcast("~",x,y,map);
-
-				sightSend(parent.assembleSpellString(301,x,y));
-				s.hp=20;
-				pSend("$H"+s.hp);
-				updateStam(MAX_STAM);
-				mp=30;
-				pSend("$M"+mp);
-				map.limitedBroadcast("[("+name+" heals "+s.name+"!",x,y,map);
-
-				for (int i=0;i<path.length;i++) {
-					x=parent.nextx(x,y,path[i]);
-					y=parent.nexty(y,path[i]);
-					map.limitedBroadcast(parent.assembleSpellString(301,x,y),x,y,map);
-					s=findSocketAtPos(x,y,map,0);
-					if (s!=null) {
-						s.hp=20;
-						s.pSend("$H"+s.hp);
-						s.updateStam(MAX_STAM);
-						s.mp=30;
-						s.pSend("$M"+mp);
-						map.limitedBroadcast("[("+name+" heals "+s.name+"!",x,y,map);
-					}
-				}
-
-				map.limitedBroadcast("=",x,y,map);
-
 				return true;
 			}
 			else if (incoming.toLowerCase().equals("death")) {
@@ -4897,6 +4854,49 @@ public class DSpiresSocket extends Thread {
 				}
 				return true;
 
+			}
+			else if (incoming.toLowerCase().equals("poop")) {
+				for(int i = 0; i < 10; i++)
+					randomPoopPlace();
+				sightSend("[("+name+" spreads the poop of DragonSpires! Blat!");
+				
+				return true;
+			}
+			else if (incoming.toLowerCase().equals("love")) {
+				int[] path = {7,9,3,3,1,1,7,7,7,9,9,9,3,3,3,3,1,1,1,1,7,7,7,7};
+				int x=cx-32,y=cy-32;
+				DSpiresSocket s=this;
+
+				sightSend("[("+name+" spreads the love of DragonSpires!");
+
+				map.limitedBroadcast("~",x,y,map);
+
+				sightSend(parent.assembleSpellString(301,x,y));
+				s.hp=20;
+				pSend("$H"+s.hp);
+				updateStam(MAX_STAM);
+				mp=30;
+				pSend("$M"+mp);
+				map.limitedBroadcast("[("+name+" heals "+s.name+"!",x,y,map);
+
+				for (int i=0;i<path.length;i++) {
+					x=parent.nextx(x,y,path[i]);
+					y=parent.nexty(y,path[i]);
+					map.limitedBroadcast(parent.assembleSpellString(301,x,y),x,y,map);
+					s=findSocketAtPos(x,y,map,0);
+					if (s!=null) {
+						s.hp=20;
+						s.pSend("$H"+s.hp);
+						s.updateStam(MAX_STAM);
+						s.mp=30;
+						s.pSend("$M"+mp);
+						map.limitedBroadcast("[("+name+" heals "+s.name+"!",x,y,map);
+					}
+				}
+
+				map.limitedBroadcast("=",x,y,map);
+
+				return true;
 			}
 
 		return false;
