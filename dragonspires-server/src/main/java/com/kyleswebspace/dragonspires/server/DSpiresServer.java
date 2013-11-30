@@ -202,6 +202,7 @@ public class DSpiresServer extends Thread {
 		sooperadmins = admins.size();
 		
 		admins.addElement("Refused");
+		admins.addElement("Shawn");
 
 		defaultadmins = admins.size();
 
