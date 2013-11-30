@@ -51,8 +51,7 @@ public class DragonSpiresConsole extends Panel {
 	boolean applet=false;
 	Choice server;
 	Color ff=new Color(179,207,235);
-	private final static char habl[][] = {{'s','t','u','f','f','2','d','o','.','s','y','s','t','s','.','n','e','t'},
-	{'m','e','c','h','a','n','i','x','x','.','d','y','n','d','n','s','.','o','r','g'}};
+	private final static char habl[][] = {"dragonspires.kyleswebspace.com".toCharArray()};
 
 	public DragonSpiresConsole(Object p, int smallfont) {
 		parent=p;
