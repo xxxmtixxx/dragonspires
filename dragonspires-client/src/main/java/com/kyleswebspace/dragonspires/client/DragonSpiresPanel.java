@@ -431,7 +431,6 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 
 	public DragonSpiresPanel(DragonSpiresFrame pa, String p, boolean ama, int serv, DragonSpiresApplet a) {
 
-
 		//System.out.println("\n\nIt's okay to hide me but not close me! =)");
 		setLayout(null);
 		this.setFocusTraversalKeysEnabled(false);
@@ -620,19 +619,9 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		}
 
 		try {
-			if(!DragonSpiresFrame.backgroundMusicLoaded) {
-				if(DragonSpiresFrame.backgroundMusicCheckbox.getState()) {
-					AudioStream backgroundMusicStream = new AudioStream(
-							this.getClass().getResourceAsStream(
-									"resources/chess.au"));
-					ContinuousAudioDataStream backgroundMusic = 
-							new ContinuousAudioDataStream(backgroundMusicStream.getData());
-					
-					AudioPlayer.player.start(backgroundMusic);
-					
-					DragonSpiresFrame.backgroundMusicLoaded = true;
-				}
-			}
+			new BackgroundMusicThread(
+					DragonSpiresFrame.backgroundMusicLoaded, 
+					DragonSpiresFrame.backgroundMusicCheckbox).start();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -747,9 +736,6 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 					clip = new AudioStream(
 						this.getClass().getResourceAsStream("resources/entity.au"));
 					break;
-				
-//				backgroundMusic = new AudioStream(
-//						this.getClass().getResourceAsStream("resources/chess.au"));
 			}
 		} catch(Exception e) {
 			//e.printStackTrace();
