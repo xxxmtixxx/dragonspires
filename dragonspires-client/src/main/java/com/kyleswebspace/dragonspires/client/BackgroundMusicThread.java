@@ -30,7 +30,7 @@ public class BackgroundMusicThread extends Thread {
 				if(backgroundMusicCheckbox.getState() && !isPlaying) {
 					clip = AudioSystem.getClip();
 					clip.open(AudioSystem.getAudioInputStream(
-							this.getClass().getResourceAsStream("resources/chess.wav")));
+							this.getClass().getResource("resources/chess.au")));
 					clip.loop(Clip.LOOP_CONTINUOUSLY);
 					
 					clip.start();
@@ -44,7 +44,7 @@ public class BackgroundMusicThread extends Thread {
 				Thread.sleep(100);
 			}
 		} catch(Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 }
