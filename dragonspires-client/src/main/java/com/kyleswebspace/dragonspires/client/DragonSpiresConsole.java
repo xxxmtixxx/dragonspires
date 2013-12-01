@@ -51,7 +51,11 @@ public class DragonSpiresConsole extends Panel {
 	boolean applet=false;
 	Choice server;
 	Color ff=new Color(179,207,235);
-	private final static char habl[][] = {"dragonspires.kyleswebspace.com".toCharArray()};
+	
+	private final static char habl[][] = {
+		"dragonspires.kyleswebspace.com".toCharArray(), 
+		"localhost".toCharArray()
+	};
 
 	public DragonSpiresConsole(Object p, int smallfont) {
 		parent=p;
@@ -99,6 +103,7 @@ public class DragonSpiresConsole extends Panel {
 
 			server=new Choice();
 			server.addItem("MA (main)");
+			server.addItem("Local");
 			server.resize(100,20);
 			server.move(75,70);
 			server.setFont(sf);

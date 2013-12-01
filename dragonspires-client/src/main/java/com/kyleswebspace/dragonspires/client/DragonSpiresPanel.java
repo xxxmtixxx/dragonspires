@@ -64,9 +64,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
 import java.io.PrintStream;
-import java.io.StringReader;
 import java.net.Socket;
 import java.net.URL;
 import java.util.StringTokenizer;
@@ -76,7 +74,7 @@ import java.util.Vector;
 public class DragonSpiresPanel extends Panel implements Runnable {
 
 	final char version[] = {'V','0','0','8','2'};
-	private final static String[] habl = {"dragonspires.kyleswebspace.com"};
+	private final static String[] habl = {"dragonspires.kyleswebspace.com", "localhost"};
 
 	final static String itemnames[]= {"nothing","some paper",
                                                                 "light armor",
