@@ -38,6 +38,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           and everyone else who has supported the development of DragonSpires.
 */
 
+import java.awt.Checkbox;
 import java.awt.Frame;
 import java.awt.Window;
 import java.awt.Event;
@@ -51,8 +52,12 @@ public class DragonSpiresFrame extends Frame {
 	Frame f;
 	boolean fullscreen=true;
 	boolean onetoclose=false;
+	DragonSpiresConsole console = null;
 	static int smallfont=12,normalfont=14;
 	static int windowcount=0;
+	static boolean backgroundMusicLoaded = false;
+	static Checkbox soundCheckbox = null;
+	static Checkbox backgroundMusicCheckbox = null;
 
 	public static void main(String args[]) {
 		/*if (args.length==1) {
@@ -75,21 +80,23 @@ public class DragonSpiresFrame extends Frame {
 		System.out.println("Starting DragonSpires...");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("dragon.gif"));
 		//resize(208,132);
-		DragonSpiresConsole aconsole = new DragonSpiresConsole(this,smallfont);
-		add(aconsole,"Center");
+		console = new DragonSpiresConsole(this,smallfont);
+		add(console,"Center");
 		show();
-		aconsole.resize(199,130);
+		console.resize(199,160);
 		pack();
 		onetoclose=true;
 		System.out.println("Done.");
 	}
-	public DragonSpiresFrame(int server, int mode) {
+	public DragonSpiresFrame(int server, int mode, Checkbox sound, Checkbox backgroundMusic) {
 		
 		super(" DragonSpires ("+windowcount+")");
 		windowcount++;
 
 		p = new DragonSpiresPanel(this, "file:/"+System.getProperty("user.dir")+System.getProperty("file.separator"), false, server, null);
-
+		soundCheckbox = sound;
+		backgroundMusicCheckbox = backgroundMusic;
+		
 		Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 
 		int tx = d.width/2-320;

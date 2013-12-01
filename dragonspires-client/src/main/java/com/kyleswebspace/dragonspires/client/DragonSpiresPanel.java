@@ -38,6 +38,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           and everyone else who has supported the development of DragonSpires.
 */
 
+import java.applet.AudioClip;
 import java.awt.Button;
 import java.awt.Choice;
 import java.awt.Color;
@@ -61,6 +62,7 @@ import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -70,6 +72,10 @@ import java.net.URL;
 import java.util.StringTokenizer;
 //import audio.*;
 import java.util.Vector;
+
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+import sun.audio.ContinuousAudioDataStream;
 
 public class DragonSpiresPanel extends Panel implements Runnable {
 
@@ -456,7 +462,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		keyok = false;
 
 		line1=line2=line3=connstat="";
-
+		
 		inventory = new int[35];
 		replies = new String[5];
 		for (int i=0;i<replies.length;i++)
@@ -614,6 +620,24 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		}
 
 		try {
+			if(!DragonSpiresFrame.backgroundMusicLoaded) {
+				if(DragonSpiresFrame.backgroundMusicCheckbox.getState()) {
+					AudioStream backgroundMusicStream = new AudioStream(
+							this.getClass().getResourceAsStream(
+									"resources/chess.au"));
+					ContinuousAudioDataStream backgroundMusic = 
+							new ContinuousAudioDataStream(backgroundMusicStream.getData());
+					
+					AudioPlayer.player.start(backgroundMusic);
+					
+					DragonSpiresFrame.backgroundMusicLoaded = true;
+				}
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
 			String incoming = null;
 			while((incoming = in.readLine()) != null) {
 				if (ledin==1) {
@@ -635,6 +659,8 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 							if (amapplet) {
 								if (dsapplet.sound.ps.getState())
 									dsapplet.sound.play(Integer.parseInt(incoming.substring(1,incoming.length())));
+							} else {
+								playSound(incoming.substring(1,incoming.length()));
 							}
 							continue;
 						case '>':
@@ -676,6 +702,60 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		
 		System.out.println("Got null, apparently.");
 		stop();
+	}
+
+	private void playSound(String substring) {
+		try {
+			if(DragonSpiresFrame.soundCheckbox.getState())
+				AudioPlayer.player.start(getClip(Integer.parseInt(substring)));
+		} catch(Exception e) {
+			//e.printStackTrace();
+		}
+	}
+
+	private InputStream getClip(int soundNumber) {
+		
+		InputStream clip = null;
+		
+		try {
+			switch(soundNumber) {
+				case 0:
+					clip = new AudioStream(
+						this.getClass().getResourceAsStream("resources/pop.au"));
+					break;
+				case 1:
+					clip = new AudioStream(
+						this.getClass().getResourceAsStream("resources/bouncy.au"));
+					break;
+				case 2:
+					clip = new AudioStream(
+						this.getClass().getResourceAsStream("resources/arnold2.au"));
+					break;
+				case 3:
+					clip = new AudioStream(
+						this.getClass().getResourceAsStream("resources/swish2.au"));
+					break;
+				case 4:
+					clip = new AudioStream(
+						this.getClass().getResourceAsStream("resources/clank.au"));
+					break;
+				case 5:
+					clip = new AudioStream(
+						this.getClass().getResourceAsStream("resources/terrier.au"));
+					break;
+				case 6:
+					clip = new AudioStream(
+						this.getClass().getResourceAsStream("resources/entity.au"));
+					break;
+				
+//				backgroundMusic = new AudioStream(
+//						this.getClass().getResourceAsStream("resources/chess.au"));
+			}
+		} catch(Exception e) {
+			//e.printStackTrace();
+		}
+		
+		return clip;
 	}
 
 	public void secondaryIncoming(String incoming) {
@@ -808,10 +888,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 				break;
 			case 'p':
 				sendIt("pong");
-				//System.out.println("Ping-Pong!");
-			//default:
-			//else if (incoming.startsWith("!") && ps.getState())
-			//	aus[Integer.parseInt(incoming.substring(1,incoming.length()))].play();
+				break;
 		}
 	}
 

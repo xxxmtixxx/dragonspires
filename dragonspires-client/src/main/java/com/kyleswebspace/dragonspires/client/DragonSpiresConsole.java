@@ -47,6 +47,8 @@ public class DragonSpiresConsole extends Panel {
 	Object parent;
 	Button btnSound,btnNew,btnQuery;
 	Checkbox fs;
+	Checkbox sound;
+	Checkbox backgroundMusic;
 	Font sf;
 	boolean applet=false;
 	Choice server;
@@ -79,7 +81,7 @@ public class DragonSpiresConsole extends Panel {
 		add(btnNew);
 
 		btnQuery = new Button("Query Server");
-		btnQuery.move(21,101);
+		btnQuery.move(21,131);
 		btnQuery.resize(157,20);
 		btnQuery.setBackground(new Color(49,49,82));
 		btnQuery.setForeground(Color.yellow);
@@ -105,7 +107,7 @@ public class DragonSpiresConsole extends Panel {
 			server.addItem("MA (main)");
 			server.addItem("Local");
 			server.resize(100,20);
-			server.move(75,70);
+			server.move(75,101);
 			server.setFont(sf);
 			server.setBackground(new Color(49,49,82));
 			server.setForeground(Color.yellow);
@@ -119,10 +121,28 @@ public class DragonSpiresConsole extends Panel {
 		fs.setForeground(Color.yellow);
 		fs.setFont(sf);
 		add(fs);
+		
+		backgroundMusic = new Checkbox("Backgound Music");
+		backgroundMusic.setState(true);
+		backgroundMusic.move(50, 60);
+		backgroundMusic.resize(120, 20);
+		backgroundMusic.setFont(sf);
+		backgroundMusic.setBackground(new Color(49,49,82));
+		backgroundMusic.setForeground(Color.yellow);
+		add(backgroundMusic);
+		
+		sound = new Checkbox("Sound Effects");
+		sound.setState(true);
+		sound.move(50, 77);
+		sound.resize(100, 20);
+		sound.setFont(sf);
+		sound.setBackground(new Color(49,49,82));
+		sound.setForeground(Color.yellow);
+		add(sound);
 	}
 	public void paint(Graphics g) {
 		g.setColor(Color.white);
-		g.drawRect(0,0,198,129);
+		g.drawRect(0,0,198,159);
 		g.drawLine(0,17,198,17);
 		g.setFont(sf);
 		g.setColor(Color.orange);
@@ -134,7 +154,7 @@ public class DragonSpiresConsole extends Panel {
 			g.drawString("you're ready to quit the game.",22,120);
 		}
 		else
-			g.drawString("Server:",25,86);
+			g.drawString("Server:",25,117);
 
 	}
 	public boolean action (Event e, Object arg) {
@@ -146,13 +166,13 @@ public class DragonSpiresConsole extends Panel {
 		}
 		else if (e.target == btnNew) {
 			if (applet) {
-				new DragonSpiresFrame((DragonSpiresApplet)parent,fs.getState()).p.start();
+				//new DragonSpiresFrame((DragonSpiresApplet)parent,fs.getState()).p.start();
 			}
 			else {
 				int i=1;
 				if (fs.getState())
 					i=0;
-				new DragonSpiresFrame(server.getSelectedIndex(),i);
+				new DragonSpiresFrame(server.getSelectedIndex(), i, sound, backgroundMusic);
 			}
 			return true;
 		}
