@@ -56,7 +56,7 @@ public class RandomInfoThread extends Thread {
 			return;
 		while (true) {
 			try {
-				sleep(1000 * 5);
+				sleep(1000 * 5 * 60);
 				parent.channelBroadcast("* "+randomInfos[(int)Math.round(Math.random()*(randomInfos.length-1))],parent.INFO_CHANNEL);
 			}
 			catch(Exception e) {
