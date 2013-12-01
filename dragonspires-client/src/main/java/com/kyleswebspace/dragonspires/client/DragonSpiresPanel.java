@@ -2542,7 +2542,7 @@ public class DragonSpiresPanel extends Panel implements Runnable {
 		else if (x>=57 && y>=431 && x<=116 && y<=461)
 			ttLike(itemnames[afeet],x,y);
 		else if (x>=24 && y>=12 && x<=144 && y<=171)
-			ttLike("http://stuff2do.systs.net/dspire",10,82);
+			ttLike("http://dragonspires.kyleswebspace.com",10,82);
 		else if (x>=210 && y>=18 && x<=223 && y<=134)
 			ttLike("HP: "+hp+"/"+maxhp,x-50,y);
 		else if (x>=187 && y>=19 && x<=201 && y<=136)
