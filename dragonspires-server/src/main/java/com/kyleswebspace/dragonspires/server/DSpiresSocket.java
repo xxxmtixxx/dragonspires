@@ -4658,14 +4658,14 @@ public class DSpiresSocket extends Thread {
 			pSend("(Floor: "+map.tilemap[tx][ty]);
 			return true;
 		}
-		/*else if (incoming.toLowerCase().equals("sweeper")) {
+		else if (incoming.toLowerCase().equals("sweeper")) {
 			char tx = parent.toDSChar(parent.nextx(cx-32,cy-32,facing));
 			char ty = parent.toDSChar(parent.nexty(cy-32,facing));
 			map.pdoMove((PlayerDataObject)parent.SWEEPER,parent.longShapeStart[parent.SWEEPER.shapecat][parent.SWEEPER.facing],parent.SWEEPER.colorstring,parent.SWEEPER.x,parent.SWEEPER.y,tx,ty,map);
 			parent.SWEEPER.x=tx;
 			parent.SWEEPER.y=ty;
 			return true;
-		}*/
+		}
 		else if (incoming.toLowerCase().startsWith("echo")) {
 			if (incoming.toLowerCase().startsWith("echo "))
 				map.broadcast("("+incoming.substring(5),map);

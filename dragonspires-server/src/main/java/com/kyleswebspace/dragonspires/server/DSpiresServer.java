@@ -348,8 +348,8 @@ public class DSpiresServer extends Thread {
 		String[] s2s;
 
 		maps[0].npc3s = new Vector();
-		//SWEEPER = new Sweeper(25,30,npc3base,maps[0]);
-		//maps[0].npc3s.addElement(SWEEPER);
+		SWEEPER = new Sweeper(25,30,npc3base,maps[0]);
+		maps[0].npc3s.addElement(SWEEPER);
 		maps[0].npc3s.addElement(new Kalamar(npc3base,maps[0]));
 
 
